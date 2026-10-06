@@ -8,11 +8,16 @@ name: CI
 
 jobs:
   tests:
-    name: Tests
+    strategy:
+      matrix:
+        python-version:
+          - "3.11"
+          - "3.14"
+    name: Tests ${{ matrix.python-version }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       
       - uses: astral-sh/setup-uv@v10.2.0
 
-      - run: uv run pytest
+      - run: uv run --python=${{ matrix.python-version }} pytest
