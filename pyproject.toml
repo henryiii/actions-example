@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "actions-example"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Henry Schreiner", email = "henryfs@princeton.edu" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+actions-example = "actions_example:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
