@@ -7,6 +7,12 @@ on:
 name: CI
 
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: j178/prek-action@v3.0.0
   tests:
     strategy:
       fail-fast: false
@@ -28,7 +34,7 @@ jobs:
     runs-on: ${{ matrix.runs-on }}
     steps:
       - uses: actions/checkout@v7
-      
+
       - uses: astral-sh/setup-uv@v10.2.0
 
       - run: uv run --python=${{ matrix.python-version }} pytest
